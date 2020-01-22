@@ -1,13 +1,27 @@
 <template>
-  <div class="area" v-on:click.once="getPosition()"></div>
+  <div class="area" v-on:click.once="getPosition()">
+    <Chart
+      :chartData="this.chartData"
+      :options="this.options"
+    />
+  </div>
 </template>
 
 <script>
+import Chart from '../components/parts/Chart.vue';
+
+const CHART_DATA = [];
+const OPTIONS = [];
+
 export default {
   name: 'MatrixSample',
-  props: {
-    msg: String
+  data: function() {
+    return {
+      chartData: CHART_DATA,
+      OPTIONS : OPTIONS,
+    };
   },
+  components: {Chart},
   methods: {
     getPosition: function () {
       document.addEventListener('mousemove', function(e) {
