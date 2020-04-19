@@ -2,10 +2,19 @@
 import { Scatter } from 'vue-chartjs';
 
 export default {
-    mixins: [Scatter],
-    props: ['chartData', 'options'],
+    extends: Scatter,
+    props: {
+        chartData: {
+            type: Object,
+            default: null
+        },
+        chartOption: {
+            type: Object,
+            default: null
+        }
+    },
     mounted () {
-        this.renderChart(this.chartData, this.options);
+        this.renderChart(this.chartData, this.chartOption)
     },
 }
 </script>
